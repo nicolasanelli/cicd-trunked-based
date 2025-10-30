@@ -17,6 +17,7 @@ jobs:
         run: echo Hello, world!
   unit-tests:
     runs-on: ubuntu-latest
+    needs: build
 
     steps:
       - uses: actions/checkout@v4
@@ -25,6 +26,7 @@ jobs:
         run: echo Hello, world!
   quality:
     runs-on: ubuntu-latest
+    needs: unit-tests
 
     steps:
       - uses: actions/checkout@v4
@@ -41,6 +43,7 @@ jobs:
   manual-approval:
     name: manual approval
     runs-on: ubuntu-latest
+    needs: quality
     if: success()
 
     permissions:
@@ -58,6 +61,7 @@ jobs:
     
   versioning:
     runs-on: ubuntu-latest
+    needs: manual-approval
 
     steps:
       - uses: actions/checkout@v4
