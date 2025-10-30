@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run a one-line script
+      - name: Maven build
         run: echo Hello, world!
   unit-tests:
     runs-on: ubuntu-latest
@@ -21,7 +21,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run a one-line script
+      - name: Maven verify
         run: echo Hello, world!
   sonarqube:
     runs-on: ubuntu-latest
@@ -29,7 +29,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run a one-line script
+      - name: Analysis Sonarqube to branch main
         run: echo Hello, world!
   fortify:
     runs-on: ubuntu-latest
@@ -37,7 +37,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run a one-line script
+      - name: Analysis Fortify to branch main
         run: echo Hello, world!
   advance-security:
     runs-on: ubuntu-latest
@@ -45,5 +45,5 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run a one-line script
+      - name: Analysis Advance Security to branch main
         run: echo Hello, world!
