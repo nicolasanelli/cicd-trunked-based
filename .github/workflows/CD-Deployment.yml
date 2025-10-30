@@ -1,0 +1,67 @@
+name: CD-Deployment
+
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        description: "Ambiente de destino do deploy"
+        required: true
+        type: choice
+        options:
+          - dev
+          - hml
+          - prd
+      version:
+        description: "Versão (tag) a ser deployada"
+        required: true
+        type: string
+      gmud_objective:
+        description: "Objetivo da mudança (Obrigatório caso PRD)"
+        required: false
+        type: string
+      gmud_origin:
+        description: "Origem da mudança (Obrigatório caso PRD)"
+        required: false
+        type: choice
+        options:
+          - ""
+          - "Incidente"
+          - "História"
+          - "Problema"
+          - "Solicitação"
+      gmud_origin_detail:
+        description: "Informe o número da origem (Obrigatório caso PRD)"
+        required: false
+        type: string
+
+jobs:
+  input-validations:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      - name: Check if PRD fields filled
+        run: echo Hello, world!
+
+      - name: Check if version exists
+        run: echo Hello, world!
+  gmud:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create GMUD
+        run: echo Hello, world!
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy to selected environment
+        run: echo Hello, world!
