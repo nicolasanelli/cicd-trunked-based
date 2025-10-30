@@ -54,6 +54,8 @@ jobs:
       - name: Await for manual approval
         uses: trstringer/manual-approval@v1
         with:
+          secret: ${{ github.TOKEN }}
+          approvers: nicolasanelli
           minimum-approvals: 1
           issue-title: "Gerar versão?"
           issue-body: "Deseja gerar versão?"
