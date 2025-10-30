@@ -23,7 +23,7 @@ jobs:
 
       - name: Maven verify
         run: echo Hello, world!
-  sonarqube:
+  quality:
     runs-on: ubuntu-latest
 
     steps:
@@ -31,19 +31,45 @@ jobs:
 
       - name: Analysis Sonarqube to branch main
         run: echo Hello, world!
-  fortify:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
 
       - name: Analysis Fortify to branch main
         run: echo Hello, world!
-  advance-security:
+
+      - name: Analysis Advance Security to branch main
+        run: echo Hello, world!
+
+  manual-approval:
+    name: manual approval
+    runs-on: ubuntu-latest
+    if: success()
+
+    permissions:
+      issues: write
+      contents: read
+
+    steps: 
+      - name: Await for manual approval
+        uses: trstringer/manual-approval@v1
+        with:
+          minimum-approvals: 1
+          issue-title: "Gerar versão?"
+          issue-body: "Deseja gerar versão?"
+
+    
+  versioning:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
 
-      - name: Analysis Advance Security to branch main
+      - name: Figure out next version
+        run: echo Hello, world!
+
+      - name: Update version
+        run: echo Hello, world!
+
+      - name: Generate changelog
+        run: echo Hello, world!
+
+      - name: Commit and Tagging
         run: echo Hello, world!
